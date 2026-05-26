@@ -42,7 +42,7 @@ function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:underline">
+                  <a href="#" className="hover:underline bg-black">
                     Facebook
                   </a>
                 </li>
