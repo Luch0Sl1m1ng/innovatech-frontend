@@ -13,6 +13,12 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
+      - name: Debug - listar archivos
+        run: |
+          ls -la
+          echo "--- contenido de DockerFile ---"
+          cat DockerFile || echo "NO EXISTE DockerFile"
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
