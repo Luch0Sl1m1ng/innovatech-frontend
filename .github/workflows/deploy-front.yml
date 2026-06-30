@@ -37,8 +37,10 @@ jobs:
             ls -la
             exit 1
           fi
-          echo "Usando Dockerfile: $DOCKERFILE_PATH"
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f "$DOCKERFILE_PATH" .
+          docker build \
+            --build-arg VITE_VENTAS_API_URL=http://innovatech-alb-86742501.us-east-1.elb.amazonaws.com:8082 \
+            --build-arg VITE_DESPACHOS_API_URL=http://innovatech-alb-86742501.us-east-1.elb.amazonaws.com:8081 \
+            -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f "$DOCKERFILE_PATH" .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
       - name: Force new deployment on ECS
